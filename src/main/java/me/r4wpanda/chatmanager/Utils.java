@@ -1,7 +1,6 @@
 package me.r4wpanda.chatmanager;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class Utils {
 
@@ -19,6 +18,10 @@ public class Utils {
         replacementMap.put('8', "b");
         replacementMap.put('9', "q");
         replacementMap.put('0', "o");
+        replacementMap.put('$', "s");
+        replacementMap.put('!', "i");
+        replacementMap.put('|', "l");
+
 
         StringBuilder output = new StringBuilder();
 
