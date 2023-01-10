@@ -1,0 +1,7 @@
+name: ChatManagerPlugin
+version: '${project.version}'
+main: me.r4wpanda.chatmanager.ChatManagerPlugin
+api-version: 1.17
+prefix: ChatManagerPlugin -->
+authors: [ R4wPanda ]
+description: ChatManagerPlugin for your minecraft server, keep everything friendly! :)
