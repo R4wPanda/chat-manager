@@ -50,9 +50,11 @@ public class CensoredConfigManager {
     public boolean containCensoredWord(String str){
         List<String> words = getCensoredWords();
         String lowered = str.toLowerCase();
+        String numberedWord;
 
         for (String check : words) {
-            if (lowered.contains(check.toLowerCase())) {
+            numberedWord = Utils.numberedWordReplacer(check.toLowerCase());
+            if (lowered.contains(numberedWord)) {
                 System.out.println("Someone said the word " + check);
                 System.out.println("I have deleted their message! No need to worry");
                 return true;
