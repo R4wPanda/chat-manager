@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CensoredConfigManager {
 
-    private ChatManagerPlugin main;
+    public ChatManagerPlugin main;
 
     public CensoredConfigManager(ChatManagerPlugin main) {
         this.main = main;
@@ -49,12 +49,10 @@ public class CensoredConfigManager {
 
     public boolean containCensoredWord(String str){
         List<String> words = getCensoredWords();
-        String lowered = str.toLowerCase();
-        String numberedWord;
+        String lowered = Utils.sanitizeString(str.toLowerCase());
 
         for (String check : words) {
-            numberedWord = Utils.numberedWordReplacer(check.toLowerCase());
-            if (lowered.contains(numberedWord)) {
+            if (lowered.contains(check.toLowerCase())) {
                 System.out.println("Someone said the word " + check);
                 System.out.println("I have deleted their message! No need to worry");
                 return true;

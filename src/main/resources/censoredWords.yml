@@ -1,25 +1,7 @@
 CensoredWords:
   toggle: true
+  replace-chars:
+    1: "i"
+    4: "a"
   censored-word-list:
-    - Nigger
-    - Nigga
-    - Slave
     - Idiot
-    - Stupid
-    - Retard
-    - Coke
-    - Meth
-    - Hash
-    - Dick
-    - Pussy
-    - P0ssy
-    - Penis
-    - P3n1s
-    - P3nis
-    - Pen1s
-    - Asshole
-    - Faggot
-    - Gay
-    - Fag
-    - Hoe
-    - Cunt
