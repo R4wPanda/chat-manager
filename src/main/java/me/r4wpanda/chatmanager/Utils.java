@@ -4,35 +4,28 @@ import java.util.HashMap;
 
 public class Utils {
 
-    private static HashMap<Character, String> replacementMap = new HashMap<>();
+    private static HashMap<String, String> replacementMap = new HashMap<>();
 
-    public static String numberedWordReplacer(String word) {
+    private static CensoredConfigManager CCManager;
 
-        replacementMap.put('1', "i");
-        replacementMap.put('2', "z");
-        replacementMap.put('3', "e");
-        replacementMap.put('4', "a");
-        replacementMap.put('5', "s");
-        replacementMap.put('6', "g");
-        replacementMap.put('7', "t");
-        replacementMap.put('8', "b");
-        replacementMap.put('9', "q");
-        replacementMap.put('0', "o");
-        replacementMap.put('$', "s");
-        replacementMap.put('!', "i");
-        replacementMap.put('|', "l");
+    public Utils(CensoredConfigManager CCManager) {
+        Utils.CCManager = CCManager;
+    }
 
+    public static String sanitizeString(String word) {
 
-        StringBuilder output = new StringBuilder();
-
-        for (char c : word.toCharArray()) {
-            if (replacementMap.containsKey(c)) {
-                output.append(replacementMap.get(c));
-            } else {
-                output.append(c);
-            }
+        for (String key : CCManager.getCensoredConfig().getConfigurationSection("CensoredWords.replace-chars").getKeys(false)) {
+            replacementMap.put(key, CCManager.getCensoredConfig().getString("CensoredWords.replace-chars." + key));
         }
 
-        return output.toString();
+        String str = word;
+
+        for (String key : CCManager.getCensoredConfig().getConfigurationSection("CensoredWords.replace-chars.").getKeys(false)) {
+            if (word.contains(key)) {
+                str = str.replace(key, replacementMap.get((key)));
+            }
+        }
+        return str;
+
     }
 }
