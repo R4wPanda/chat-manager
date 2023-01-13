@@ -1,5 +1,7 @@
-package me.r4wpanda.chatmanager;
+package me.r4wpanda.chatmanager.managers;
 
+import me.r4wpanda.chatmanager.ChatManagerPlugin;
+import me.r4wpanda.chatmanager.utils.Utils;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -9,10 +11,12 @@ import java.util.List;
 
 public class CensoredConfigManager {
 
-    public ChatManagerPlugin main;
+    private ChatManagerPlugin main = ChatManagerPlugin.getInstance();
+    private static CensoredConfigManager instance;
+    public static CensoredConfigManager getInstance() {return instance;}
 
-    public CensoredConfigManager(ChatManagerPlugin main) {
-        this.main = main;
+    public CensoredConfigManager() {
+        instance = this;
         saveCensoredConfig();
     }
 
@@ -27,10 +31,6 @@ public class CensoredConfigManager {
     public FileConfiguration getCensoredConfig() {
         File censoredWordsFile = new File(main.getDataFolder(), "censoredWords.yml");
         return YamlConfiguration.loadConfiguration(censoredWordsFile);
-    }
-
-    public boolean checkCensoredToggle() {
-        return getCensoredConfig().getBoolean("CensoredWords.toggle");
     }
 
     public List<String> getCensoredWords() {
@@ -60,4 +60,5 @@ public class CensoredConfigManager {
         }
         return false;
     }
+
 }

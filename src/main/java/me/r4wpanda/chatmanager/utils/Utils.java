@@ -1,16 +1,17 @@
-package me.r4wpanda.chatmanager;
+package me.r4wpanda.chatmanager.utils;
+
+import me.r4wpanda.chatmanager.ChatManagerPlugin;
+import me.r4wpanda.chatmanager.managers.CensoredConfigManager;
 
 import java.util.HashMap;
 
 public class Utils {
 
-    private static HashMap<String, String> replacementMap = new HashMap<>();
+    private static ChatManagerPlugin main = ChatManagerPlugin.getInstance();
 
-    private static CensoredConfigManager CCManager;
+    private final static HashMap<String, String> replacementMap = new HashMap<>();
 
-    public Utils(CensoredConfigManager CCManager) {
-        Utils.CCManager = CCManager;
-    }
+    private final static CensoredConfigManager CCManager = CensoredConfigManager.getInstance();
 
     public static String sanitizeString(String word) {
 
@@ -27,5 +28,11 @@ public class Utils {
         }
         return str;
 
+    }
+
+    public static void mkDefDir() {
+        if (!main.getDataFolder().exists()) {
+            main.getDataFolder().mkdir();
+        }
     }
 }

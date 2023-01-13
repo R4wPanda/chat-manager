@@ -1,28 +1,28 @@
-package me.r4wpanda.chatmanager;
+package me.r4wpanda.chatmanager.listeners;
 
+import me.r4wpanda.chatmanager.ChatManagerPlugin;
+import me.r4wpanda.chatmanager.managers.CensoredConfigManager;
+import me.r4wpanda.chatmanager.utils.ConfigUtils;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-public class ChatListener implements Listener {
+public class PlayerEvents implements Listener {
 
-    private CensoredConfigManager CCManager;
-
-    public ChatListener(CensoredConfigManager CCManager) {
-        this.CCManager = CCManager;
-    }
+    private ChatManagerPlugin main = ChatManagerPlugin.getInstance();
+    private CensoredConfigManager CCManager = CensoredConfigManager.getInstance();
 
     @EventHandler
     public void onChatEvent(AsyncPlayerChatEvent e) {
 
-        if (!CCManager.main.chatEnabled){
+        if (!main.chatEnabled){
             if (!e.getPlayer().hasPermission("ChatManager.ChatToggleBypass")) {
                 e.setCancelled(true);
                 e.getPlayer().sendMessage("The chat is currently disabled");
             }
         }
 
-        if (!CCManager.checkCensoredToggle()) {
+        if (!ConfigUtils.checkFeatureToggle("word-censur")) {
             return;
         }
 

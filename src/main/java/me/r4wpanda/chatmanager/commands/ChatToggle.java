@@ -1,5 +1,6 @@
-package me.r4wpanda.chatmanager;
+package me.r4wpanda.chatmanager.commands;
 
+import me.r4wpanda.chatmanager.ChatManagerPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -10,15 +11,14 @@ import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ChatToggle implements CommandExecutor, TabCompleter {
 
-    private ChatManagerPlugin main;
+    private final ChatManagerPlugin main = ChatManagerPlugin.getInstance();
 
-    public ChatToggle(ChatManagerPlugin main) {
-        this.main = main;
-    }
+
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -60,7 +60,7 @@ public class ChatToggle implements CommandExecutor, TabCompleter {
                 return StringUtil.copyPartialMatches(args[0], Arrays.asList("on", "off"), new ArrayList<>());
             }
 
-            return new ArrayList<>();
+            return null;
         }
     }
 
