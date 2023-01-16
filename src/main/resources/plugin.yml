@@ -3,7 +3,7 @@ version: '${project.version}'
 main: me.r4wpanda.chatmanager.ChatManagerPlugin
 api-version: 1.17
 prefix: ChatManagerPlugin -->
-authors: [ R4wPanda ]
+authors: [ R4wPanda, Shreyas Ayyengar]
 description: ChatManagerPlugin for your minecraft server, keep everything friendly! :)
 commands:
   chattoggle:

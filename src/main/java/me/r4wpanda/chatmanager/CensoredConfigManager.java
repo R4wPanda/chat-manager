@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CensoredConfigManager {
 
-    public ChatManagerPlugin main;
+    public final ChatManagerPlugin main;
 
     public CensoredConfigManager(ChatManagerPlugin main) {
         this.main = main;
@@ -41,13 +41,11 @@ public class CensoredConfigManager {
             return listValues;
         }
 
-        for (String value : getCensoredConfig().getStringList("CensoredWords.censored-word-list")) {
-            listValues.add(value);
-        }
+        listValues.addAll(getCensoredConfig().getStringList("CensoredWords.censored-word-list"));
         return listValues;
     }
 
-    public boolean containCensoredWord(String str){
+    public boolean containCensoredWord(String str) {
         List<String> words = getCensoredWords();
         String lowered = Utils.sanitizeString(str.toLowerCase());
 

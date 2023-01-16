@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ChatToggle implements CommandExecutor, TabCompleter {
 
-    private ChatManagerPlugin main;
+    private final ChatManagerPlugin main;
 
     public ChatToggle(ChatManagerPlugin main) {
         this.main = main;
@@ -39,7 +39,9 @@ public class ChatToggle implements CommandExecutor, TabCompleter {
             } else {
                 main.setChatEnabled(true);
                 sender.sendMessage("You have enabled the chat");
-                for (Player player : Bukkit.getOnlinePlayers())  {player.sendMessage("Chat has been enabled by " + sender.getName());}
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    player.sendMessage("Chat has been enabled by " + sender.getName());
+                }
             }
         } else if (args[0].equalsIgnoreCase("off")) {
             if (!main.chatEnabled) {
@@ -47,20 +49,20 @@ public class ChatToggle implements CommandExecutor, TabCompleter {
             } else {
                 main.setChatEnabled(false);
                 sender.sendMessage("You have disabled the chat");
-                for (Player player : Bukkit.getOnlinePlayers())  {player.sendMessage("Chat has been disabled by " + sender.getName());}
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    player.sendMessage("Chat has been disabled by " + sender.getName());
+                }
             }
         }
         return false;
     }
 
-
-        @Override
-        public List<String> onTabComplete (CommandSender sender, Command command, String alias, String[]args){
-            if (args.length == 1) {
-                return StringUtil.copyPartialMatches(args[0], Arrays.asList("on", "off"), new ArrayList<>());
-            }
-
-            return new ArrayList<>();
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        if (args.length == 1) {
+            return StringUtil.copyPartialMatches(args[0], Arrays.asList("on", "off"), new ArrayList<>());
         }
-    }
 
+        return new ArrayList<>();
+    }
+}
