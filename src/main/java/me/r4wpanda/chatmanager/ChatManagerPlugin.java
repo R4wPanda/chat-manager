@@ -38,7 +38,7 @@ public final class ChatManagerPlugin extends JavaPlugin {
 
     public void mkDefDir() {
         if (!getDataFolder().exists()) {
-            getDataFolder().mkdir();
+            if (!getDataFolder().mkdir()) getLogger().severe("Could not create plugin directory!");
         }
     }
 }
