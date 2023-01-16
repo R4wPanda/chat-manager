@@ -1,6 +1,7 @@
 package me.r4wpanda.chatmanager;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class Utils {
 
@@ -13,14 +14,15 @@ public class Utils {
     }
 
     public static String sanitizeString(String word) {
+        Set<String> replacedCharsKeys = CCManager.getCensoredConfig().getConfigurationSection("CensoredWords.replace-chars").getKeys(false);
 
-        for (String key : CCManager.getCensoredConfig().getConfigurationSection("CensoredWords.replace-chars").getKeys(false)) {
+        for (String key : replacedCharsKeys) {
             replacementMap.put(key, CCManager.getCensoredConfig().getString("CensoredWords.replace-chars." + key));
         }
 
         String str = word;
 
-        for (String key : CCManager.getCensoredConfig().getConfigurationSection("CensoredWords.replace-chars.").getKeys(false)) {
+        for (String key : replacedCharsKeys) {
             if (word.contains(key)) {
                 str = str.replace(key, replacementMap.get((key)));
             }
