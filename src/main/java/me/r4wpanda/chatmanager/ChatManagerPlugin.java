@@ -13,12 +13,12 @@ public final class ChatManagerPlugin extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
-        CensoredConfigManager CCManager = new CensoredConfigManager(this);;
+        CensoredConfigManager CCManager = new CensoredConfigManager(this);
+        ;
         registerOther(CCManager);
         registerCommands();
         registerEvents(CCManager);
     }
-
 
     public void setChatEnabled(boolean chatEnabled) {
         this.chatEnabled = chatEnabled;
@@ -43,10 +43,4 @@ public final class ChatManagerPlugin extends JavaPlugin {
             getDataFolder().mkdir();
         }
     }
-
-
-
-
-
-
 }

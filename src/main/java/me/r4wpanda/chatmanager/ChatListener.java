@@ -15,7 +15,7 @@ public class ChatListener implements Listener {
     @EventHandler
     public void onChatEvent(AsyncPlayerChatEvent e) {
 
-        if (!CCManager.main.chatEnabled){
+        if (!CCManager.main.chatEnabled) {
             if (!e.getPlayer().hasPermission("ChatManager.ChatToggleBypass")) {
                 e.setCancelled(true);
                 e.getPlayer().sendMessage("The chat is currently disabled");

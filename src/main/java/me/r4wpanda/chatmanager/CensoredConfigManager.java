@@ -47,7 +47,7 @@ public class CensoredConfigManager {
         return listValues;
     }
 
-    public boolean containCensoredWord(String str){
+    public boolean containCensoredWord(String str) {
         List<String> words = getCensoredWords();
         String lowered = Utils.sanitizeString(str.toLowerCase());
 
