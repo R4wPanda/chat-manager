@@ -6,27 +6,27 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class ChatListener implements Listener {
 
-    private final CensoredConfigManager CCManager;
+    private final CensoredConfigManager censorManager;
 
-    public ChatListener(CensoredConfigManager CCManager) {
-        this.CCManager = CCManager;
+    public ChatListener(CensoredConfigManager censorManager) {
+        this.censorManager = censorManager;
     }
 
     @EventHandler
     public void onChatEvent(AsyncPlayerChatEvent e) {
 
-        if (!CCManager.main.chatEnabled) {
+        if (!censorManager.main.chatEnabled) {
             if (!e.getPlayer().hasPermission("ChatManager.ChatToggleBypass")) {
                 e.setCancelled(true);
                 e.getPlayer().sendMessage("The chat is currently disabled");
             }
         }
 
-        if (!CCManager.checkCensoredToggle()) {
+        if (!censorManager.checkCensoredToggle()) {
             return;
         }
 
-        if (CCManager.containCensoredWord(e.getMessage())) {
+        if (censorManager.containCensoredWord(e.getMessage())) {
             e.setCancelled(true);
             e.getPlayer().sendMessage("Your message have been deleted, as it contains a blacklisted word!");
         }

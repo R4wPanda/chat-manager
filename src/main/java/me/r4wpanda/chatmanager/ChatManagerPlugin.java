@@ -13,11 +13,11 @@ public final class ChatManagerPlugin extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
-        CensoredConfigManager CCManager = new CensoredConfigManager(this);
+        CensoredConfigManager censorManager = new CensoredConfigManager(this);
 
-        Utils.registerManager(CCManager);
+        Utils.registerManager(censorManager);
         registerCommands();
-        registerEvents(CCManager);
+        registerEvents(censorManager);
     }
 
     public void setChatEnabled(boolean chatEnabled) {
@@ -28,8 +28,8 @@ public final class ChatManagerPlugin extends JavaPlugin {
         getCommand("chattoggle").setExecutor(new ChatToggle(this));
     }
 
-    public void registerEvents(CensoredConfigManager CCManager) {
-        Bukkit.getPluginManager().registerEvents(new ChatListener(CCManager), this);
+    public void registerEvents(CensoredConfigManager censorManager) {
+        Bukkit.getPluginManager().registerEvents(new ChatListener(censorManager), this);
     }
 
     public void mkDefDir() {
