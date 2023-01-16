@@ -9,8 +9,8 @@ public class Utils {
 
     private static CensoredConfigManager CCManager;
 
-    public Utils(CensoredConfigManager CCManager) {
-        Utils.CCManager = CCManager;
+    public static void registerManager(CensoredConfigManager censorManager) {
+        CCManager = censorManager;
     }
 
     public static String sanitizeString(String word) {

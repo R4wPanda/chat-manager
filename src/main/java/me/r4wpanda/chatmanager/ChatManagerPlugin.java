@@ -15,17 +15,13 @@ public final class ChatManagerPlugin extends JavaPlugin {
 
         CensoredConfigManager CCManager = new CensoredConfigManager(this);
 
-        registerOther(CCManager);
+        Utils.registerManager(CCManager);
         registerCommands();
         registerEvents(CCManager);
     }
 
     public void setChatEnabled(boolean chatEnabled) {
         this.chatEnabled = chatEnabled;
-    }
-
-    public void registerOther(CensoredConfigManager CCManager) {
-        new Utils(CCManager);
     }
 
     public void registerCommands() {
