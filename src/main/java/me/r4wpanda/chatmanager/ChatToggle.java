@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ChatToggle implements CommandExecutor, TabCompleter {
 
-    private ChatManagerPlugin main;
+    private final ChatManagerPlugin main;
 
     public ChatToggle(ChatManagerPlugin main) {
         this.main = main;

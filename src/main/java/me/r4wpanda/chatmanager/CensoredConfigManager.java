@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CensoredConfigManager {
 
-    public ChatManagerPlugin main;
+    public final ChatManagerPlugin main;
 
     public CensoredConfigManager(ChatManagerPlugin main) {
         this.main = main;

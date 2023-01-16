@@ -6,7 +6,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class ChatListener implements Listener {
 
-    private CensoredConfigManager CCManager;
+    private final CensoredConfigManager CCManager;
 
     public ChatListener(CensoredConfigManager CCManager) {
         this.CCManager = CCManager;
