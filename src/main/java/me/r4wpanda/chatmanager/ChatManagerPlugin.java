@@ -14,7 +14,7 @@ public final class ChatManagerPlugin extends JavaPlugin {
         saveDefaultConfig();
 
         CensoredConfigManager CCManager = new CensoredConfigManager(this);
-        ;
+
         registerOther(CCManager);
         registerCommands();
         registerEvents(CCManager);
