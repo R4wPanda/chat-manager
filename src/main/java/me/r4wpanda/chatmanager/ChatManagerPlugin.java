@@ -29,9 +29,7 @@ public final class ChatManagerPlugin extends JavaPlugin {
     }
 
     public void registerCommands() {
-        ChatToggle chatToggle = new ChatToggle(this);
-        getCommand("chattoggle").setExecutor(chatToggle);
-        getCommand("chattoggle").setTabCompleter(chatToggle);
+        getCommand("chattoggle").setExecutor(new ChatToggle(this));
     }
 
     public void registerEvents(CensoredConfigManager CCManager) {
