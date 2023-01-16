@@ -5,13 +5,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ChatManagerPlugin extends JavaPlugin {
 
-    public boolean chatEnabled;
+    public boolean chatEnabled = true;
 
     @Override
     public void onEnable() {
-
-        chatEnabled = true;
-
         mkDefDir();
         getConfig().options().copyDefaults();
         saveDefaultConfig();
@@ -20,8 +17,6 @@ public final class ChatManagerPlugin extends JavaPlugin {
         registerOther(CCManager);
         registerCommands();
         registerEvents(CCManager);
-
-
     }
 
 
