@@ -41,9 +41,7 @@ public class CensoredConfigManager {
             return listValues;
         }
 
-        for (String value : getCensoredConfig().getStringList("CensoredWords.censored-word-list")) {
-            listValues.add(value);
-        }
+        listValues.addAll(getCensoredConfig().getStringList("CensoredWords.censored-word-list"));
         return listValues;
     }
 
