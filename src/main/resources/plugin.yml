@@ -7,3 +7,4 @@ authors: [ R4wPanda ]
 description: ChatManagerPlugin for your minecraft server, keep everything friendly! :)
 commands:
   chattoggle:
+    usage: "/chattoggle 'on/off/status'"

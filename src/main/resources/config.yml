@@ -1,2 +1,3 @@
 features:
-    word-censur: true
+    word-blacklist: true
+    chat-toggle: true

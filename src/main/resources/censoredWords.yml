@@ -1,6 +1,0 @@
-CensoredWords:
-  replace-chars:
-    1: "i"
-    4: "a"
-  censored-word-list:
-    - Idiot
