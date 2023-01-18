@@ -1,6 +1,2 @@
-BlacklistedWords:
-  replace-chars:
-    1: "i"
-    4: "a"
-  list:
-    - "Idiot"
+messages:
+  NO-PERMISSION-MESSAGE: ""
