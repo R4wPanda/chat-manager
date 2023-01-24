@@ -9,7 +9,7 @@ public final class ChatManagerPlugin extends JavaPlugin {
 
     public boolean chatEnabled = true;
 
-    public static ChatManagerPlugin instance;
+    public static ChatManagerPlugin plugin;
 
     private ConfigHandler configHandler;
     private BlacklistWordsHandler blacklistWordsHandler;
@@ -17,7 +17,7 @@ public final class ChatManagerPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        instance = this;
+        plugin = this;
 
         configHandler = new ConfigHandler(this)
                 .createConfig("config")
